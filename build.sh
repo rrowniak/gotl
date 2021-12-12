@@ -7,6 +7,6 @@ function fail() {
     exit 1
 }
 
-for step in build fmt vet test; do
+for step in build fmt vet "test -cover"; do
     $GO_COMP $step || fail "Step $step failed. Aborting"
 done

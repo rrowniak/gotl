@@ -36,3 +36,10 @@ func main() {
 	fmt.Println(s.Empty())
 }
 ```
+
+### Features
+#### Stack
+#### Queue
+#### Priority queue
+#### Circular buffer
+#### Graph

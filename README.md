@@ -25,11 +25,11 @@ package main
 
 import (
 	"fmt"
-	"github.com/rrowniak/gotl"
+	"github.com/rrowniak/gotl/cont"
 )
 
 func main() {
-	var s gotl.Stack[int]
+	var s cont.Stack[int]
 	s.Push(1)
 	fmt.Println(s.Top())
 	s.Pop()
@@ -41,7 +41,7 @@ func main() {
 #### Stack
 A generic implementation of the stack data structure. A self explanatory example:
 ```go
-var s gotl.Stack[string]
+var s cont.Stack[string]
 s.Push("bottom")
 s.Push("top")
 
@@ -64,7 +64,7 @@ if !s.Empty() {
 #### Queue
 A generic implementation of the queue data structure. A self explanatory example:
 ```go
-var q Queue[int]
+var q cont.Queue[int]
 q.Push(1)
 q.Push(2)
 

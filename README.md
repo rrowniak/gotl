@@ -80,9 +80,14 @@ for i := 1; i < 3; i++ {
 }
 
 if !q.Empty() {
-    t.Errorf("Queue should be empty now, but have %d element(s)", q.Len())
+    t.Errorf("Queue should be empty now, but has %d element(s)", q.Len())
 }
 ```
 #### Priority queue
+Implementation of a heap based priority queue.
 #### Circular buffer
+Concept explanation [here](https://en.wikipedia.org/wiki/Circular_buffer).
 #### Graph
+A graph library.
+#### Algos
+Algorithms and handy utils.

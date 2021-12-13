@@ -27,7 +27,7 @@ func TestQueueExample(t *testing.T) {
 		q.Pop()
 	}
 	if !q.Empty() {
-		t.Errorf("Queue should be empty now, but have %d element(s)", q.Len())
+		t.Errorf("Queue should be empty now, but has %d element(s)", q.Len())
 		dump_q(t, &q)
 	}
 }

@@ -27,7 +27,7 @@ func (q *Queue[T]) shrink() {
 			q.d[i] = q.d[i+q.front]
 		}
 	}
-	q.d = q.d[0 : q.front-1]
+	q.d = q.d[0:q.Len()]
 	q.front = 0
 }
 
@@ -44,6 +44,11 @@ func (q Queue[T]) Front() T {
 
 // Pop an element.
 func (q *Queue[T]) Pop() {
+	if q.Len() == 0 {
+		// nothing to do
+		return
+	}
+
 	q.front++
 
 	// time to shrink?

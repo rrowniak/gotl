@@ -18,10 +18,6 @@ func (q *Queue[T]) Reserve(size int) {
 }
 
 func (q *Queue[T]) shrink() {
-	if q.front == 0 {
-		// nothing to fo
-		return
-	}
 	if !q.Empty() {
 		for i := 0; i < q.Len(); i++ {
 			q.d[i] = q.d[i+q.front]

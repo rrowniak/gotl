@@ -4,6 +4,11 @@ import (
 	"testing"
 )
 
+type tmpStruct struct {
+	a int
+	b string
+}
+
 func dump_q[T any](t *testing.T, q *Queue[T]) {
 	t.Errorf("len(d): %d, cap(d): %d, front: %d", len(q.d), cap(q.d), q.front)
 }
@@ -21,6 +26,22 @@ func TestQueueExample(t *testing.T) {
 		}
 		q.Pop()
 	}
+	if !q.Empty() {
+		t.Errorf("Queue should be empty now, but have %d element(s)", q.Len())
+		dump_q(t, &q)
+	}
+}
+
+func TestQueueEmptyPop(t *testing.T) {
+	var q Queue[tmpStruct]
+
+	if !q.Empty() {
+		t.Errorf("Queue should be empty now, but have %d element(s)", q.Len())
+		dump_q(t, &q)
+	}
+
+	q.Pop()
+
 	if !q.Empty() {
 		t.Errorf("Queue should be empty now, but have %d element(s)", q.Len())
 		dump_q(t, &q)
@@ -82,5 +103,24 @@ func TestReservationQueue(t *testing.T) {
 			t.Errorf("Expected #%d value %s,  got %s", i, r, q.Front())
 		}
 		q.Pop()
+	}
+}
+
+func TestAutoShrink(t *testing.T) {
+	var q Queue[int]
+	for i := 0; i < 100; i++ {
+		q.Push(i)
+	}
+
+	for i := 0; i < 100; i++ {
+		if q.Front() != i {
+			t.Errorf("Expected front == %d, got %d", i, q.Front())
+		}
+		q.Pop()
+	}
+
+	if !q.Empty() {
+		t.Errorf("Queue should be empty now, but have %d element(s)", q.Len())
+		dump_q(t, &q)
 	}
 }

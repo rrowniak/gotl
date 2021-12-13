@@ -1,4 +1,4 @@
-package gotl
+package cont
 
 import (
 	"testing"

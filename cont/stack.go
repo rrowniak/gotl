@@ -1,4 +1,4 @@
-package gotl
+package cont
 
 // Stack container
 type Stack[T any] struct {

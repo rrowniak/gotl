@@ -1,4 +1,4 @@
-package gotl
+package cont
 
 // Queue container
 type Queue[T any] struct {

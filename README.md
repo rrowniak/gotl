@@ -83,8 +83,60 @@ if !q.Empty() {
     t.Errorf("Queue should be empty now, but has %d element(s)", q.Len())
 }
 ```
+#### Heap
+A heap structure. Note that a special function is used for building this data struct.
+```go
+func TLessInt(l, r int) bool {
+	return l < r
+}
+
+h := cont.NewHeap[int](10, TLessInt)
+h.Insert(1)
+h.Insert(5)
+h.Insert(2)
+
+if h.GetMax() != 5 {
+    t.Errorf("Expected max = 5, got %d", h.GetMax())
+}
+h.RemoveMax()
+
+if h.GetMax() != 2 {
+    t.Errorf("Expected max = 2, got %d", h.GetMax())
+}
+h.RemoveMax()
+
+if h.GetMax() != 1 {
+    t.Errorf("Expected max = 1, got %d", h.GetMax())
+}
+h.RemoveMax()
+```
 #### Priority queue
-Implementation of a heap based priority queue.
+Implementation of a heap based priority queue. Note that a special function is used for building this data struct.
+```go
+func TLessInt(l, r int) bool {
+	return l < r
+}
+
+q := cont.NewPriorityQueue[int](100, TLessInt)
+q.Push(1)
+q.Push(1)
+q.Push(2)
+
+if q.Front() != 2 {
+    t.Errorf("Front expected to be 2, got %d", q.Front())
+}
+q.Pop()
+
+if q.Front() != 1 {
+    t.Errorf("Front expected to be 1, got %d", q.Front())
+}
+q.Pop()
+
+if q.Front() != 1 {
+    t.Errorf("Front expected to be 1, got %d", q.Front())
+}
+q.Pop()
+```
 #### Circular buffer
 Concept explanation [here](https://en.wikipedia.org/wiki/Circular_buffer).
 #### Graph

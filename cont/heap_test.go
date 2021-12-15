@@ -11,27 +11,24 @@ func TLessInt(l, r int) bool {
 
 func TestHeapExample(t *testing.T) {
 	h := NewHeap[int](10, TLessInt)
-	h.Insert(1)
-	h.Insert(5)
-	h.Insert(2)
+	h.Push(1)
+	h.Push(5)
+	h.Push(2)
 
-	if h.GetMax() != 5 {
+	if h.Pop() != 5 {
 		t.Errorf("Expected max = 5, got %d", h.GetMax())
 	}
-	h.RemoveMax()
 
-	if h.GetMax() != 2 {
+	if h.Pop() != 2 {
 		t.Errorf("Expected max = 2, got %d", h.GetMax())
 	}
-	h.RemoveMax()
 
-	if h.GetMax() != 1 {
+	if h.Pop() != 1 {
 		t.Errorf("Expected max = 1, got %d", h.GetMax())
 	}
-	h.RemoveMax()
 }
 
-func TestHeapInsert(t *testing.T) {
+func TestHeapPush(t *testing.T) {
 	h := NewHeap(10, TLessInt)
 
 	if !h.Empty() {
@@ -45,7 +42,7 @@ func TestHeapInsert(t *testing.T) {
 		if v > max {
 			max = v
 		}
-		h.Insert(v)
+		h.Push(v)
 
 		if h.Len() != i {
 			t.Errorf("Expected heap size = %d, got %d", i, h.Len())
@@ -57,15 +54,15 @@ func TestHeapInsert(t *testing.T) {
 	}
 }
 
-func TestHeapRemoveMax(t *testing.T) {
+func TestHeapPop(t *testing.T) {
 	h := NewHeap(10, TLessInt)
 	SIZE := 100
 	for i := 1; i <= SIZE; i++ {
-		h.Insert(i)
+		h.Push(i)
 	}
 
 	for i := SIZE - 1; i >= 0; i-- {
-		h.RemoveMax()
+		h.Pop()
 
 		if h.Len() != i {
 			t.Errorf("Expected %d elements, got %d elements", i, h.Len())
@@ -77,5 +74,5 @@ func TestHeapRemoveMax(t *testing.T) {
 		}
 	}
 
-	h.RemoveMax()
+	h.Pop()
 }

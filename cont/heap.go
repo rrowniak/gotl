@@ -74,21 +74,23 @@ func (h Heap[T]) GetMax() T {
 	return h.d[0]
 }
 
-// Remove max element
-func (h *Heap[T]) RemoveMax() {
+// Remove max element and reurn it
+func (h *Heap[T]) Pop() (r T) {
 	l := len(h.d)
 	if l == 0 {
 		return
 	}
 
+	r = h.d[0]
 	h.d[0] = h.d[l-1]
 	h.d = h.d[:l-1]
 
 	h.siftDown(0)
+	return
 }
 
-// Insert an element
-func (h *Heap[T]) Insert(v T) {
+// Push an element
+func (h *Heap[T]) Push(v T) {
 	h.d = append(h.d, v)
 	h.siftUp(len(h.d) - 1)
 }

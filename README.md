@@ -91,24 +91,21 @@ func TLessInt(l, r int) bool {
 }
 
 h := cont.NewHeap[int](10, TLessInt)
-h.Insert(1)
-h.Insert(5)
-h.Insert(2)
+h.Push(1)
+h.Push(5)
+h.Push(2)
 
-if h.GetMax() != 5 {
+if h.Pop() != 5 {
     t.Errorf("Expected max = 5, got %d", h.GetMax())
 }
-h.RemoveMax()
 
-if h.GetMax() != 2 {
+if h.Pop() != 2 {
     t.Errorf("Expected max = 2, got %d", h.GetMax())
 }
-h.RemoveMax()
 
-if h.GetMax() != 1 {
+if h.Pop() != 1 {
     t.Errorf("Expected max = 1, got %d", h.GetMax())
 }
-h.RemoveMax()
 ```
 #### Priority queue
 Implementation of a heap based priority queue. Note that a special function is used for building this data struct.

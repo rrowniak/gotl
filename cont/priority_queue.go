@@ -14,7 +14,7 @@ type PriorityQueue[T any] struct {
 
 // Push an element.
 func (q *PriorityQueue[T]) Push(t T) {
-	q.d.Insert(t)
+	q.d.Push(t)
 }
 
 // Get an element from the queue. This function does not change state of the queue.
@@ -24,8 +24,8 @@ func (q PriorityQueue[T]) Front() T {
 }
 
 // Pop an element.
-func (q *PriorityQueue[T]) Pop() {
-	q.d.RemoveMax()
+func (q *PriorityQueue[T]) Pop() T {
+	return q.d.Pop()
 }
 
 // Return true if the queue is empty.
